@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order history</title>
+</head>
+<body style="background-color:powderblue">
+    <p>
+        Welcome, <b>{{user.username}}</b>! <a href="/"><b>LOG OUT</b></a> |
+        <a href="/app"><b>MAIN PAGE</b></a> | <a href="/cart"><b>MY CART</b></a> | <a href="/history"><b>HISTORY</b></a>
+    </p>
+    <h2>Order history</h2>
+    <ul>
+    {% block content %}
+        {% for order in orders %}
+            <li style="font-size:20px">{{ order }}
+                <ul>
+                    {% for product in order.list_of_products%}
+                        <li style="font-size:20px">{{ product }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    {% endblock content %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+</head>
+<body style="background-color:powderblue">
+<p>
+    Welcome, <b>{{user.username}}</b>! <a href="/"><b>LOG OUT</b></a> |
+    <a href="/app"><b>MAIN PAGE</b></a> | <a href="/cart"><b>MY CART</b></a> | <a href="/history"><b>HISTORY</b></a>
+</p>
+<h2>Available products</h2>
+<div class="container" align="center">
+<style>
+    .container{
+        display: flex
+    }
+</style>
+{% block content %}
+    {% for product in products %}
+        <a href="/product_{{ product.id }}">
+            <div>
+                <img src= {{ product.image }} width="300"/><br>
+                <b>{{ product.name }}</b><br>{{ product.price }} lei
+            </div>
+        </a>
+        <div>&nbsp;&nbsp;</div>
+    {% endfor %}
+{% endblock content %}
+</div>
+</body>
+</html>

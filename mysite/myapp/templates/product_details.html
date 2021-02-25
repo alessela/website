@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head xmlns:style="http://www.w3.org/1999/xhtml" xmlns:style="http://www.w3.org/1999/xhtml">
+    <title>{{product.name}}</title>
+    <style>
+    #box{
+        width: 1120px;
+    }
+</style>
+</head>
+<body style="background-color:powderblue">
+    <p>
+        Welcome, <b>{{user.username}}</b>! <a href="/"><b>LOG OUT</b></a> |
+        <a href="/app"><b>MAIN PAGE</b></a> | <a href="/cart"><b>MY CART</b></a> | <a href="/history"><b>HISTORY</b></a>
+    </p>
+    <h2>{{ product.name }}</h2>
+    <div class="container">
+    <style>
+        .container{
+            display: flex
+        }
+    </style>
+        <div><img src= {{ product.image }} /></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div>
+            <p style="font-size:20px"><b>Price:</b> {{ product.price }} lei</p>
+            <p style="font-size:20px"><b>Description:</b> {{ product.description }}</p>
+            <a href="/product_{{ product.id }}/ok">
+                <p style="font-size:20px">Add in cart</p>
+            </a>
+            <a href="/cart" style="font-size:20px">Go to the cart</a>
+            <p style="font-size:20px; color:green">{{ msg }}</p>
+        </div>
+    </div>
+</body>

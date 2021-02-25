@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body style="background-color:powderblue">
+    <p>
+        Welcome, <b>{{user.username}}</b>! <a href="/"><b>LOG OUT</b></a> |
+        <a href="/app"><b>MAIN PAGE</b></a> | <a href="/cart"><b>MY CART</b></a> | <a href="/history"><b>HISTORY</b></a>
+    </p>
+    <h2>My cart</h2>
+    <p style="font-size:20px"><b>Total sum:</b> {{ total_sum }} lei</p>
+    <form method="POST" class="post-form" action="/cart/buy">
+    {% csrf_token %}
+    <div class="col-md-8">
+        <div class="form-group">
+            <label for="iban" style="font-size:20px">IBAN</label>
+            <input type="text" id="iban" name="iban" class="form-control" required="required" style="font-size:20px"/>
+        </div>
+        <div class="form-group">
+            <label for="address" style="font-size:20px">Address</label>
+            <input type="text" id="address" name="address" class="form-control" required="required" style="font-size:20px"/>
+        </div>
+        <div class="form-group">
+            <label for="phone_number" style="font-size:20px">Phone number</label>
+            <input type="text" id="phone_number" name="phone_number" class="form-control" required="required" style="font-size:20px"/>
+        </div>
+        <br />
+        <div class="form-group">
+            <button class="btn btn-primary form-control" style="font-size:20px"><span class="glyphicon glyphicon-log-in"></span>Buy!</button>
+        </div>
+    </div>
+    </form>
+    <p style="font-size:20px; color:red">{{ msg }}</p>
+    {% block content %}
+    {% for cp in products %}
+        <div class="container">
+            <style>
+                .container{
+                    display: flex
+                }
+            </style>
+            <div><img src= {{ cp.product.image }} width="180"/></div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <div>
+                <p style="font-size:20px"><b>{{ cp.product.name }}</b></p>
+                <p style="font-size:20px"><b>Price:</b> {{ cp.product.price }} lei</p>
+                <p style="font-size:20px"><b>Description:</b> {{ cp.product.description }}</p>
+                <a href="/cart/remove_{{ cp.pk }}">
+                    <p style="font-size:20px">Remove from cart</p>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
+</body>
+</html>

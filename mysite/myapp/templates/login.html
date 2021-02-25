@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+</head>
+<body style="background-color:powderblue">
+    <h1>Login</h1>
+<form method="POST" class="post-form" action="/app">
+    {% csrf_token %}
+    <div class="col-md-8">
+        <div class="form-group">
+            <label for="username" style="font-size:20px">Username</label>
+            <input type="text" id="username" name="username" class="form-control" required="required" style="font-size:20px"/>
+        </div>
+        <div class="form-group">
+            <label for="password" style="font-size:20px">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required="required" style="font-size:20px"/>
+        </div>
+        <br />
+        <div class="form-group">
+            <button class="btn btn-primary form-control"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+        </div>
+        <p style="font-size:20px; color:red">{{ msg }}</p>
+    </div>
+</form>
+</body>
+</html>
